@@ -1,4 +1,6 @@
+import { ArrowLeftIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface PokemonStat {
   stat: {
@@ -30,7 +32,7 @@ async function getPokemon(name: string) {
   return res.json();
 }
 
-// Add error boundary
+// Update metadata function
 export async function generateMetadata({
   params,
 }: {
@@ -41,17 +43,24 @@ export async function generateMetadata({
   };
 }
 
-// Add error handling
+// Update page component
 export default async function PokemonPage({
   params,
 }: {
   params: { name: string };
 }) {
   try {
-    const pokemon = await getPokemon(params.name.toLowerCase()); // ensure lowercase
+    const pokemon = await getPokemon(params.name.toLowerCase());
 
     return (
       <div className='p-4 max-w-xl mx-auto'>
+        <Link
+          href='/'
+          className='mb-4 flex items-center gap-2'
+        >
+          <ArrowLeftIcon className='w-6 h-6' />
+          Go home
+        </Link>
         <Image
           src={pokemon.sprites.front_default}
           alt={pokemon.name}

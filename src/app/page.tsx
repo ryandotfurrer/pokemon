@@ -34,6 +34,10 @@ export default function PokemonSearch() {
 
   return (
     <main className='p-4 max-w-3xl mx-auto'>
+      <hgroup className='mb-4'>
+        <h1 className='text-2xl font-semibold '>Pokemon Search</h1>
+        <p>Search for your favorite Pokemon by name or ID.</p>
+      </hgroup>
       <input
         type='text'
         placeholder='Search Pokemon...'
